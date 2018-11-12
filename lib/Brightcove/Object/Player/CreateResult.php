@@ -4,6 +4,12 @@ namespace Brightcove\Object\Player;
 
 use Brightcove\Object\ObjectBase;
 
+/**
+ * Class CreateResult
+ *
+ * @package Brightcove\Object\Player
+ * @api
+ */
 class CreateResult extends ObjectBase {
   /**
    * @var string
@@ -76,7 +82,7 @@ class CreateResult extends ObjectBase {
    */
   public function setUrl($url) {
     $this->url = $url;
-    $this->fieldChanged('id');
+    $this->fieldChanged('url');
     return $this;
   }
 

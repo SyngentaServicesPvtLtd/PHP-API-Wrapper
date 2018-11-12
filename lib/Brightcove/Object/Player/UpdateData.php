@@ -1,16 +1,17 @@
 <?php
 
-namespace Brightcove\Object\Player\Branch\Configuration;
+namespace Brightcove\Object\Player;
 
 use Brightcove\Object\ObjectBase;
 
 /**
- * Class PlayerTemplate
+ * Class UpdateData
  *
- * @package Brightcove\Object\Player\Branch\Configuration
+ * @package Brightcove\Object\Player
  * @api
  */
-class PlayerTemplate extends ObjectBase {
+class UpdateData extends ObjectBase {
+
   /**
    * @var string
    */
@@ -19,13 +20,12 @@ class PlayerTemplate extends ObjectBase {
   /**
    * @var string
    */
-  protected $version;
+  protected $description;
 
   public function applyJSON(array $json) {
     parent::applyJSON($json);
-
     $this->applyProperty($json, 'name');
-    $this->applyProperty($json, 'version');
+    $this->applyProperty($json, 'description');
   }
 
   /**
@@ -37,7 +37,8 @@ class PlayerTemplate extends ObjectBase {
 
   /**
    * @param string $name
-   * @return PlayerTemplate
+   *
+   * @return UpdateData
    */
   public function setName($name) {
     $this->name = $name;
@@ -48,17 +49,19 @@ class PlayerTemplate extends ObjectBase {
   /**
    * @return string
    */
-  public function getVersion() {
-    return $this->version;
+  public function getDescription() {
+    return $this->description;
   }
 
   /**
-   * @param string $version
-   * @return PlayerTemplate
+   * @param string $description
+   *
+   * @return UpdateData
    */
-  public function setVersion($version) {
-    $this->version = $version;
-    $this->fieldChanged('version');
+  public function setDescription($description) {
+    $this->description = $description;
+    $this->fieldChanged('description');
     return $this;
   }
+
 }

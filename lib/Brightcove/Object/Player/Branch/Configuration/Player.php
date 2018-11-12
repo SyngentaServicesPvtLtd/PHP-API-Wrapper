@@ -4,6 +4,12 @@ namespace Brightcove\Object\Player\Branch\Configuration;
 
 use Brightcove\Object\ObjectBase;
 
+/**
+ * Class Player
+ *
+ * @package Brightcove\Object\Player\Branch\Configuration
+ * @api
+ */
 class Player extends ObjectBase {
   /**
    * @var PlayerTemplate
@@ -13,7 +19,7 @@ class Player extends ObjectBase {
   /**
    * @var bool
    */
-  protected $autoplay;
+  protected $inactive;
 
   public function applyJSON(array $json) {
     parent::applyJSON($json);
@@ -42,17 +48,18 @@ class Player extends ObjectBase {
   /**
    * @return boolean
    */
-  public function isAutoplay() {
-    return $this->autoplay;
+  public function isInactive() {
+    return $this->inactive;
   }
 
   /**
-   * @param boolean $autoplay
+   * @param boolean $inactive
+   *
    * @return Player
    */
-  public function setAutoplay($autoplay) {
-    $this->autoplay = $autoplay;
-    $this->fieldChanged('autoplay');
+  public function setInactive($inactive) {
+    $this->inactive = $inactive;
+    $this->fieldChanged('inactive');
     return $this;
   }
 }

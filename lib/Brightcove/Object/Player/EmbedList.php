@@ -5,14 +5,15 @@ namespace Brightcove\Object\Player;
 use Brightcove\Object\ObjectBase;
 
 /**
- * Class PlayerList
+ * Class EmbedList
  *
  * @package Brightcove\Object\Player
  * @api
  */
-class PlayerList extends ObjectBase {
+class EmbedList extends ObjectBase {
+
   /**
-   * @var array
+   * @var Embed[]
    */
   protected $items;
 
@@ -24,24 +25,24 @@ class PlayerList extends ObjectBase {
   public function applyJSON(array $json) {
     parent::applyJSON($json);
 
-    $this->applyProperty($json, 'items', NULL, Player::class, TRUE);
+    $this->applyProperty($json, 'items', NULL, Embed::class, TRUE);
     $this->applyProperty($json, 'item_count');
   }
 
   /**
-   * @return Player[]
+   * @return Embed[]
    */
   public function getItems() {
     return $this->items;
   }
 
   /**
-   * @param Player[] $items
-   * @return PlayerList
+   * @param Embed[] $items
+   *
+   * @return EmbedList
    */
-  public function setItems(array $items) {
+  public function setItems($items) {
     $this->items = $items;
-    $this->fieldChanged('items');
     return $this;
   }
 
@@ -54,11 +55,12 @@ class PlayerList extends ObjectBase {
 
   /**
    * @param int $item_count
-   * @return PlayerList
+   *
+   * @return EmbedList
    */
   public function setItemCount($item_count) {
     $this->item_count = $item_count;
-    $this->fieldChanged('item_count');
     return $this;
   }
+
 }
